@@ -25,7 +25,8 @@ func NewSimpleDataStore() SimpleDataStore {
 			"1": "Fred",
 			"2": "Mary",
 			"3": "Pat",
-		}}
+		},
+	}
 }
 
 type DataStore interface {
@@ -54,6 +55,7 @@ func (sl SimpleLogic) SayHello(userID string) (string, error) {
 	}
 	return "Hello, " + name, nil
 }
+
 func (sl SimpleLogic) SayGoodbye(userID string) (string, error) {
 	sl.l.Log("in SayGoodbye for " + userID)
 	name, ok := sl.ds.UserNameForID(userID)
@@ -66,7 +68,8 @@ func (sl SimpleLogic) SayGoodbye(userID string) (string, error) {
 func NewSimpleLogic(l Logger, ds DataStore) SimpleLogic {
 	return SimpleLogic{
 		l:  l,
-		ds: ds}
+		ds: ds,
+	}
 }
 
 type Logic interface {
